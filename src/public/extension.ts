@@ -41,7 +41,7 @@ $(function() {
       };
       let exportedJson = JSON.stringify(exportedObj, null, 2);
       let exportedBlob = new Blob([exportedJson]);
-      let exportedBlobUrl = URL.createObjectURL(exportedBlob, {type: 'application/json'});
+      let exportedBlobUrl = URL.createObjectURL(exportedBlob /* , {type: 'application/json'} */);
       let fauxLink = document.createElement('a');
       fauxLink.href = exportedBlobUrl;
       fauxLink.setAttribute('download', 'export.json');
@@ -67,7 +67,7 @@ $(function() {
     try {
       let file = e.target.files[0];
       let reader = new FileReader();
-      reader.onload = function(e) {
+      reader.onload = function(e: any) {
         let importedJson = e.target.result;
         let importedObj = JSON.parse(importedJson);
         importedObj.data.forEach(function(entry) {

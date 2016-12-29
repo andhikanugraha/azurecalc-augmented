@@ -36,7 +36,7 @@ $(function () {
             };
             let exportedJson = JSON.stringify(exportedObj, null, 2);
             let exportedBlob = new Blob([exportedJson]);
-            let exportedBlobUrl = URL.createObjectURL(exportedBlob, { type: 'application/json' });
+            let exportedBlobUrl = URL.createObjectURL(exportedBlob /* , {type: 'application/json'} */);
             let fauxLink = document.createElement('a');
             fauxLink.href = exportedBlobUrl;
             fauxLink.setAttribute('download', 'export.json');

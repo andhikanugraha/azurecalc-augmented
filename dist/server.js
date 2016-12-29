@@ -28,7 +28,7 @@ function augmentedCalculator(req, res, next) {
     });
 }
 app.all('/', augmentedCalculator);
-app.all(/pricing\/calculator/, augmentedCalculator);
+// app.all(/pricing\/calculator/, augmentedCalculator);
 app.use('/', express.static(__dirname + '/public'));
 app.use('/', proxy({ target: endpointBase, changeOrigin: true }));
 app.listen(process.env.PORT || 3000, () => console.log('Express now listening'));
