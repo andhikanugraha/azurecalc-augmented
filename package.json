@@ -1,0 +1,35 @@
+{
+  "name": "azurecalc-augmented",
+  "version": "1.0.0",
+  "description": "Augmented version of Azure Pricing Calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andhikanugraha/azurecalc-augmented.git"
+  },
+  "author": "Andhika Nugraha (andhika.nugraha@outlook.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andhikanugraha/azurecalc-augmented/issues"
+  },
+  "homepage": "https://github.com/andhikanugraha/azurecalc-augmented#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "express": "^4.14.0",
+    "http-proxy-middleware": "^0.17.3",
+    "node-fetch": "^1.6.3",
+    "tslib": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.17.31",
+    "@types/node": "^6.0.54",
+    "@types/node-fetch": "^1.6.6",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.3",
+    "typescript": "^2.1.4"
+  }
+}
