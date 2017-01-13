@@ -1,4 +1,5 @@
 declare let $: any;
+declare let initializeCalculator: any;
 
 $(function() {
   let SERVICES_KEY = 'calculator.servicesv3';
@@ -42,12 +43,11 @@ $(function() {
       let exportedJson = JSON.stringify(exportedObj, null, 2);
       let exportedBlob = new Blob([exportedJson]);
       let exportedBlobUrl = URL.createObjectURL(exportedBlob /* , {type: 'application/json'} */);
-      let fauxLink = document.createElement('a');
-      fauxLink.href = exportedBlobUrl;
-      fauxLink.setAttribute('download', 'export.json');
-      document.body.appendChild(fauxLink);
-      alert('Exporting estimate as JSON. Due to a bug, if you\'re using Edge, make sure to rename the file as * .json.');
-      fauxLink.click();
+
+      const exportJsonForm = $('#exportJsonForm');
+      const jsonBodyInput = $('#exportJsonForm input');
+      jsonBodyInput.prop('value', exportedJson);
+      exportJsonForm[0].submit();
     }
     catch (e) {
       console.error(e);
@@ -77,8 +77,7 @@ $(function() {
           }
           localStorage.setItem(entry.key, value);
         });
-        alert('Import successful. Reloading the page...');
-        window.location.reload();
+        reloadCalculator();
       };
       reader.readAsText(file);
     }
@@ -87,12 +86,20 @@ $(function() {
     }
   }
 
-  function init() {
+  function reloadCalculator() {
+    location.reload();
+  }
+
+  function addButtons() {
     let a1 = createLinkElement('Export JSON', triggerExportJSON);
     let a2 = createLinkElement('Import JSON', triggerImportJSON);
     let div = document.querySelector('div.service-picker .banner-content');
     div.appendChild(a1);
     div.appendChild(a2);
+  }
+
+  function init() {
+    addButtons();
   }
 
   init();
