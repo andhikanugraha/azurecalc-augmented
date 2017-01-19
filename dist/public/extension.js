@@ -1,6 +1,5 @@
 $(function () {
     let SERVICES_KEY = 'calculator.servicesv3';
-    let CURRENCY_KEY = 'acomuser.currency';
     function createLinkElement(label, onclick) {
         let a = document.createElement('a');
         a.className = 'button toggle-service-picker';
@@ -17,7 +16,6 @@ $(function () {
         try {
             let servicesJson = window.localStorage.getItem(SERVICES_KEY);
             let servicesObj = JSON.parse(servicesJson);
-            let currencyStr = window.localStorage.getItem(CURRENCY_KEY);
             let now = new Date();
             let exportedObj = {
                 version: '0.1',
@@ -27,10 +25,6 @@ $(function () {
                         key: SERVICES_KEY,
                         transform: 'JSON.stringify',
                         value: servicesObj
-                    },
-                    {
-                        key: CURRENCY_KEY,
-                        value: currencyStr
                     }
                 ]
             };

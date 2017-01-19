@@ -61,8 +61,9 @@ app.use('/exportedEstimate.json', bodyParser.urlencoded({ extended: true }));
 app.post('/exportedEstimate.json', (req, res, next) => {
   try {
     const parsedJson = JSON.parse(req.body.jsonBody);
-    res.header('Content-Disposition', 'attachment; filename="exportedEstimate.json"');
-    res.json(parsedJson);
+    res.header('Content-Disposition', 'attachment; filename="ExportedEstimate.json"');
+    res.header('Content-Type', 'application/json');
+    res.send(JSON.stringify(parsedJson, null, 2));
   }
   catch (e) {
     res.json({error: e.toString()});
